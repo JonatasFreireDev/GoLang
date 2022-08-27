@@ -1,14 +1,14 @@
 package print
 
 import (
+	u "fastFood/1/src/utils"
 	"fmt"
-	"time"
 )
 
-func Menu() int{
-	var choice int
+const MaxMenu int = 6
 
-	fmt.Print("\033[H\033[2J")
+func Menu(){
+	u.Clear()
 	fmt.Println("")
 	fmt.Println("+---------------------Menu---------------------+")
 	fmt.Println("|------ 1 - Visualizar o Cárdapio        ------|")
@@ -19,15 +19,5 @@ func Menu() int{
 	fmt.Println("|------ 6 - Sair do Programa             ------|")
 	fmt.Println("+----------------------------------------------+")
 	fmt.Println("")
-
-	_, e := fmt.Scan(&choice)
-
-	if e != nil {
-		fmt.Print("\033[H\033[2J")
-		fmt.Println("Digito Incorreto, Tente novamente")
-		time.Sleep(5 * time.Second)
-		Menu()
-	}
-
-	return choice
 }
+
