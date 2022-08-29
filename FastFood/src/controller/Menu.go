@@ -6,20 +6,24 @@ import (
 	"fmt"
 )
 
-func OrderController() {
+func MenuController() {
 	for {
 		print.Order()
-		choice := utils.GetChoice(print.Order, 5);
+		choice := utils.GetChoice(print.Order, print.MaxMenu);
 
 		switch choice {
 		case 1:
 			print.Foods()
+			fmt.Scanln()
 		case 2:
 			print.Drinks()
+			fmt.Scanln()
 		case 3:
 			print.Servings()
+			fmt.Scanln()
 		case 4:
 			print.Additional()
+			fmt.Scanln()
 		case 5:
 			return
 		default:
