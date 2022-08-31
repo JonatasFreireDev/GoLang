@@ -1,4 +1,4 @@
-package print
+package view
 
 import (
 	u "fastFood/1/src/utils"
