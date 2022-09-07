@@ -2,22 +2,20 @@ package controller
 
 import (
 	"fastFood/1/src/utils"
-	"fastFood/1/src/view"
 	"fmt"
+	"time"
 )
 
 func OrderController() {
 	for {
-		view.Order()
-		choice := utils.GetChoice(view.Order, 5);
+		var choice int 
 
-		switch choice {
-			case 1: view.Foods()
-			case 2: view.Drinks()
-			case 3: view.Servings()
-			case 4: view.Additional()
-			case 5: return
-			default: fmt.Println("defuuu")
-		}
+		utils.Clear()
+		fmt.Println("O que deseja adicionar ?")
+		fmt.Scan(&choice)
+
+		fmt.Println(choice)
+
+		time.Sleep(10 * time.Second)
 	}
 }
