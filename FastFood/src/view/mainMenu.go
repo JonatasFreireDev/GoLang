@@ -1,13 +1,13 @@
-package print
+package view
 
 import (
 	u "fastFood/1/src/utils"
 	"fmt"
 )
 
-const MaxMenu int = 6
+const MaxMainMenu int = 6
 
-func Menu(){
+func MainMenu(){
 	u.Clear()
 	fmt.Println("")
 	fmt.Println("+---------------------Menu---------------------+")
