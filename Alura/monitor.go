@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -69,9 +70,11 @@ func iniciarMonitoramento() {
 
 			if response.StatusCode == 200 {
 				fmt.Println("Site:", site, "carregado com sucesso!")
+				registraLog(site, true)
 			} else {
 				fmt.Println("Site:", site, "esta com problemas")
 				fmt.Println("Status Code:", response.StatusCode)
+				registraLog(site, false)
 			}
 			time.Sleep(delay * time.Second)
 		}
@@ -109,4 +112,15 @@ func leSitesDoArquivo() ([]string, error) {
 	}
 
 	return sites, nil
+}
+
+func registraLog(site string, status bool) {
+	arquivo, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	defer arquivo.Close()
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	arquivo.WriteString(time.Now().Format("02/01/2006 15:04:05") + " - " + site + "- Online:" + strconv.FormatBool(status) + "\n")
 }
